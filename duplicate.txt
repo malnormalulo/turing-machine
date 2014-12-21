@@ -1,0 +1,20 @@
+0 0 0 0 Duplicates a string of 1s
+1 1 0 1 delete initial 1
+1 0 L 2 move left of input
+2 0 1 3 write a 1 to the left
+3 1 R 4 move back to input
+4 0 R 5
+5 1 R 6
+5 0 1 10 if input is missing, write and conclude
+6 1 R 6 traverse input
+6 0 R 7
+7 1 R 7 move to right side of third string
+7 0 1 8 write a 1
+8 1 L 8 return to start
+8 0 L 9
+9 1 L 9
+9 0 R 1
+10 1 L 10 move to left side of leftmost string
+10 0 L 11
+11 1 L 11
+11 0 R 12 end
