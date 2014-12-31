@@ -91,8 +91,21 @@ def readMinimalProgram(filename):
     with open(filename) as txt:
         rdr = csv.reader(txt, delimiter = ' ')
         for r in rdr:
+            if len(r) == 0: continue
             prog[int(r[0]),
                  int(r[1])] = (r[2] if r[2] in ("R","L") else "W",
                                0 if r[2]=='0' else 1,
                                int(r[3]))
     return prog
+
+def generateUnaryMachine(iterable):
+    """Produces a machine with given inputs as unary values.
+
+    A unary input of value n is represented as a string of n+1 ones. Inputs are
+    separated by a single zero.
+    """
+    tape = list()
+    for val in iterable:
+        tape.extend([1]*(val+1))
+        tape.append(0)
+    return TuringMachine(tape)
