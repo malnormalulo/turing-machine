@@ -1,0 +1,44 @@
+0 0 0 0 Input: i, n_1, n_2, ..., n_k
+0 0 0 0 Output: n_i
+0 0 0 0 Stability not guaranteed if i>k
+0 0 0 0 An input of m consists of m+1 1s
+0 0 0 0 An output of m consist of m 1s
+0 0 0 0 Inputs separated by a single 0
+0 0 0 0 Head begins at first input
+
+1 1 0 2
+
+2 1 R 3 While {i > 0
+2 0 R 11
+3 1 R 3 proceed to next value
+3 0 R 4
+4 0 R 4
+4 1 0 5 delete value
+5 0 R 6
+6 1 0 5
+6 0 L 7 return to i
+7 0 L 7
+7 1 L 8 move to left side of i
+8 1 L 8
+8 0 R 9
+9 1 0 10 i--
+10 0 R 2 }
+
+11 0 R 11 move to n_i
+11 1 R 12
+12 1 R 12 move to right side of n_i
+12 0 R 13 
+
+13 1 0 14 do {erase
+14 0 R 15 move right}
+15 1 1 13 while there are not two consecutive 0s
+15 0 R 16
+16 1 1 13
+16 0 L 17
+
+17 0 L 17 traverse expanse of 0s
+17 1 L 18 traverse n_i
+18 1 L 18
+18 0 R 19 land on first cell of n_i
+19 1 0 20 convert from input to output format
+20 0 R 21 
