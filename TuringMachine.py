@@ -68,7 +68,13 @@ class TuringMachine:
         if debug: return log
 
     def __str__(self):
-        return ' '.join(str(s) for s in self._cells)
+        return ' '.join(str(s) for s in self._cells) + '\n' \
+               + ' ' \
+               * (sum( #add up the length of values at or left of head
+                   len(str(self._cells[i]))
+                   for i in range(0,self._head+1))
+                  + self._head - 1) \ #add tape spaces, move back onto head val
+               + 'H'
 
 def readMinimalProgram(filename):
     """Reads a text file defining a program with minimal operations.
